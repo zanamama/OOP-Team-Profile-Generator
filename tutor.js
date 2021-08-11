@@ -1,9 +1,3 @@
-const Employee = require("./Emplooyee");
-
-class Intern extends Employee {
-    constructor(name, id, email);
-}
-
 const inquirer = require("inquirer");
 
 class Employee {
@@ -29,17 +23,17 @@ class Employee {
 const generalEmployeeQs = [
   {
     name: "fullName",
-    message: "What is your name?",
+    message: "What is your name",
     type: "input",
   },
   {
     name: "id",
-    message: "What is your id?",
+    message: "What is your id",
     type: "input",
   },
   {
     name: "email",
-    message: "What is your email?",
+    message: "What is your email",
     type: "input",
   },
 ];
@@ -49,3 +43,11 @@ inquirer.prompt(generalEmployeeQs).then((answers) => {
   const employee1 = new Employee(answers.fullName, answers.id, answers.email);
   console.log(employee1);
 });
+
+// const engineerQs = [
+//   {
+//     name: "",
+//     message: "what is your github",
+//     type: "",
+//   },
+// ];

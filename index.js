@@ -9,45 +9,40 @@ const genHTML = require("./src/generateHTML");
 
 // DATA ===========
 const filename = "index.html";
-let teamArray = [];
+let teamArray = [generateHTML];
 
 // Questions in Array for User Input
 const initialManagerQuestions = [
     {
         type: "input",
-        name: "managerName",
-        message: "What is your team Manager's name?",
+        name: "mainName",
+        message: "What is your name?",
     },
     {
         type: "input",
-        name: "managerID",
-        message: "What is your Manager's ID?",
+        name: "mainID",
+        message: "What is your ID?",
     },
     {
         type: "input",
-        name: "managerEmail",
-        message: "What is your team Manager's email address?",
+        name: "mainEmail",
+        message: "What is your email address?",
     },
-    {
-        type: "input",
-        name: "managerOfficeNumber",
-        message: "What is your manager's office number?",
-    },
+    console.log(initialManagerQuestions)
 ];
 
 // Array of team members selected by Manager
 const selectTeamMemberQuestion = [
     {
         type: "list",
-        name: "How many years of experience do you have?"
-        input: "",
-        choices: ["Under 3 years", "3-5 Years", "5-10 Years" , "10+ Years"],
+        name: "What is your role here?",
+        choices: ["Intern", "Engineer", "Manager"],
     }
 ]
 
 
 
-function writeToFile
+function writeToFile();
 
 
 const selectTeamMemberQuestion = [
@@ -55,8 +50,9 @@ const selectTeamMemberQuestion = [
 ]
 
 function caputreInternInfo() {
-    inquirer.prompt(internQuestions).then(function (internInfo));
-}
+    inquirer.prompt(internQuestions).then(function (internInfo))
+    }
+
 
 
 
