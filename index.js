@@ -54,12 +54,12 @@ const internQuestions = Questions.concat({
 // FUNCTIONS
 
 const employeeCard = (employee) => {
-    let html = ``;
-    const role = employee.getRole();
-  
-    switch(role) {
-      case "Manager":
-        html = `<div class='card m-5 c-${role}'>
+  let html = ``;
+  const role = employee.getRole();
+
+  switch (role) {
+    case "Manager":
+      html = `<div class='card m-5 c-${role}'>
                   <div class='card-body'>
                       <h5 class="card-title">${employee.name}</h5>
                       <p class="card-text">${role}</p>
@@ -70,9 +70,9 @@ const employeeCard = (employee) => {
                       <li class="list-group-item">Office Number: ${employee.officeNum}</a></li>
                     </ul>
                 </div>`;
-        break;
-      case "Engineer": 
-        html = `<div class='card m-5 c-${role}'>
+      break;
+    case "Engineer":
+      html = `<div class='card m-5 c-${role}'>
                   <div class='card-body'>
                       <h5 class="card-title">${employee.name}</h5>
                       <p class="card-text">${role}</p>
@@ -83,9 +83,9 @@ const employeeCard = (employee) => {
                       <li class="list-group-item">Github: <a href="https://www.github.com/${employee.github}">${employee.github}</a></li>
                     </ul>
                 </div>`;
-        break;
-      case "Intern":
-        html = `<div class='card m-5 c-${role}'>
+      break;
+    case "Intern":
+      html = `<div class='card m-5 c-${role}'>
                   <div class='card-body'>
                       <h5 class="card-title">${employee.name}</h5>
                       <p class="card-text">${role}</p>
@@ -96,13 +96,13 @@ const employeeCard = (employee) => {
                         <li class="list-group-item">University: ${employee.school}</li>
                     </ul>
                 </div>`;
-        break;
-    }
-    htmlCards += html;
+      break;
   }
-  
-  const finalHtmlCreator = (htmlCards) => {
-    finalHtml = `<!DOCTYPE html>
+  htmlCards += html;
+};
+
+const finalHtmlCreator = (htmlCards) => {
+  finalHtml = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -126,38 +126,82 @@ const employeeCard = (employee) => {
         </main>
     </body>
     </html>`;
-  }
-  
-  const addEmployee = (answer, job) => {
-    const name = answer.name;
-    const id = answer.id;
-    const email = answer.email;
-    const officeNum = answer.officeNum;
-    const github = answer.github;
-    const school = answer.school;
-  
-  
-  
-    switch(job) {
-      case "Manager":
-        employee = new Manager(name, id, email, officeNum);
-        break;
-      case "Engineer":
-        employee = new Engineer(name, id, email, github)
-        break;
-      case "Intern":
-        employee = new Intern(name, id, email, school)
-    }
-  
-    employeeCard(employee);
-  }
-  
-  const GenerateHtml = (finalHtml) => {
-    fs.writeFile(fileName, finalHtml, (err) => {
-      err ? console.log("Error!") : console.log("File Created!")
-    })
+};
+
+const addEmployee = (answer, job) => {
+  const name = answer.name;
+  const id = answer.id;
+  const email = answer.email;
+  const officeNum = answer.officeNum;
+  const github = answer.github;
+  const school = answer.school;
+
+  switch (job) {
+    case "Manager":
+      employee = new Manager(name, id, email, officeNum);
+      break;
+    case "Engineer":
+      employee = new Engineer(name, id, email, github);
+      break;
+    case "Intern":
+      employee = new Intern(name, id, email, school);
   }
 
-  
+  employeeCard(employee);
+};
+
+const GenerateHtml = (finalHtml) => {
+  fs.writeFile(fileName, finalHtml, (err) => {
+    err ? console.log("Error!") : console.log("File Created!");
+  });
+};
+
+const startInquirer = (questions) => {
+  inquirer.prompt(questions).then((answers) => {
+    inquirer
+      .prompt([
+        {
+          type: "confirm",
+          name: "add",
+          message: "Would you like to add another employee to the team?",
+        },
+      ])
+      .then((choice) => {
+        addEmployee(answers, job);
+        if (choice.add) {
+          inquirer
+            .prompt([
+              {
+                type: "list",
+                name: "newRole",
+                message: "Which role would you like to add?",
+                choices: ["Engineer", "Intern"],
+              },
+            ])
+            .then((empChoice) => {
+              const userChoice = empChoice.newRole;
+
+              job = userChoice;
+
+              init();
+            });
+        } else {
+          finalHtmlCreator(htmlCards);
+          GenerateHtml(finalHtml);
+        }
+      });
+  });
+};
+
+const init = () => {
+  if (job === "Manager") {
+    console.log("Lets start by adding a Manager.");
+    startInquirer(managerQuestions);
+  } else if (job === "Engineer") {
+    startInquirer(engineerQuestions);
+  } else if (job === "Intern") {
+    startInquirer(internQuestions);
+  }
+};
 
 init();
