@@ -3,9 +3,9 @@ const Intern = require("../lib/Intern");
 describe("Intern", () => {
   describe("Get School", () => {
     it("Should return the interns school.", () => {
-      const school = "Howard University";
+      const school = "Pennsylvania State University";
 
-      const obj = new Intern("Harvey", 1, "harvey@howard.edu", school);
+      const obj = new Intern("Sarah", 711427, "sarah@psu.edu", school);
 
       expect(obj.getSchool()).toEqual(school);
     });
@@ -16,10 +16,10 @@ describe("Intern", () => {
       const role = "Intern";
 
       const obj = new Intern(
-        "Harvey",
+        "Sarah",
         711254,
-        "harvey@howard.edu",
-        "Howard University"
+        "sarah@psu.edu",
+        "Pennsylvania State University"
       );
 
       expect(obj.getRole()).toEqual(role);

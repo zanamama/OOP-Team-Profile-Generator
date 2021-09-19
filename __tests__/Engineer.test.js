@@ -3,7 +3,7 @@ const Engineer = require("../lib/Engineer");
 describe("Engineer", () => {
   describe("Get Github", () => {
     it("Should return the engineers github.", () => {
-      const github = "joey27";
+      const github = "zanamama";
 
       const obj = new Engineer(
         "Makhosazana",

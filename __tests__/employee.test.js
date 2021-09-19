@@ -3,9 +3,9 @@ const Employee = require("../lib/Employee");
 describe("Employee", () => {
   describe("Get Name", () => {
     it("Should return the name of the employee.", () => {
-      const name = "joe";
+      const name = "Harvey";
 
-      const obj = new Employee(name, 1, "joe@gmail.com");
+      const obj = new Employee(name, 711254, "harvey@howard.edu");
 
       expect(obj.getName()).toEqual(name);
     });
@@ -13,9 +13,9 @@ describe("Employee", () => {
 
   describe("Get ID", () => {
     it("Should return the ID of the employee.", () => {
-      const ID = 3;
+      const ID = 711254;
 
-      const obj = new Employee("Joe", ID, "joe@gmail.com");
+      const obj = new Employee("Harvey", ID, "harvey@howard.edu");
 
       expect(obj.getID()).toEqual(ID);
     });
@@ -23,9 +23,9 @@ describe("Employee", () => {
 
   describe("Get Email", () => {
     it("Should Return the email of the employee.", () => {
-      const email = "joe@gmail.com";
+      const email = "harvey@howard.edu";
 
-      const obj = new Employee("joe", 1, email);
+      const obj = new Employee("Harvey", 1, email);
 
       expect(obj.getEmail()).toEqual(email);
     });
@@ -35,7 +35,7 @@ describe("Employee", () => {
     it("Should return the email of the employee.", () => {
       const role = "Employee";
 
-      const obj = new Employee("Joe", 1, "joe@gmail.com");
+      const obj = new Employee("Harvey", 1, "harvey@howard.edu");
 
       expect(obj.getRole()).toEqual(role);
     });
