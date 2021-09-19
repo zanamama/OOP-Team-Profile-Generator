@@ -6,7 +6,7 @@
 
 header {
   display: flex;
-  background-color: darkcyan;
+  background-color: rgb(68, 119, 214);
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -32,7 +32,7 @@ h1 {
 }
 
 .c-Intern {
-  background-color: darkred;
+  background-color: rgb(0, 123, 139);
 }
 
 h5 {
