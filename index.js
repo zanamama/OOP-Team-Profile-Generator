@@ -51,4 +51,113 @@ const internQuestions = Questions.concat({
   message: "What college/university is the Intern currently attending?",
 });
 
+// FUNCTIONS
+
+const employeeCard = (employee) => {
+    let html = ``;
+    const role = employee.getRole();
+  
+    switch(role) {
+      case "Manager":
+        html = `<div class='card m-5 c-${role}'>
+                  <div class='card-body'>
+                      <h5 class="card-title">${employee.name}</h5>
+                      <p class="card-text">${role}</p>
+                  </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">ID: ${employee.id}</li>
+                      <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
+                      <li class="list-group-item">Office Number: ${employee.officeNum}</a></li>
+                    </ul>
+                </div>`;
+        break;
+      case "Engineer": 
+        html = `<div class='card m-5 c-${role}'>
+                  <div class='card-body'>
+                      <h5 class="card-title">${employee.name}</h5>
+                      <p class="card-text">${role}</p>
+                  </div>
+                    <u class="list-group list-group-flush"l>
+                      <li class="list-group-item">ID: ${employee.id}</li>
+                      <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
+                      <li class="list-group-item">Github: <a href="https://www.github.com/${employee.github}">${employee.github}</a></li>
+                    </ul>
+                </div>`;
+        break;
+      case "Intern":
+        html = `<div class='card m-5 c-${role}'>
+                  <div class='card-body'>
+                      <h5 class="card-title">${employee.name}</h5>
+                      <p class="card-text">${role}</p>
+                  </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${employee.id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
+                        <li class="list-group-item">University: ${employee.school}</li>
+                    </ul>
+                </div>`;
+        break;
+    }
+    htmlCards += html;
+  }
+  
+  const finalHtmlCreator = (htmlCards) => {
+    finalHtml = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous"
+        />
+        <link rel='stylesheet' href='./style.css'>
+        <title>Team Profile</title>
+    </head>
+    <body>
+        <header>
+            <h1 id='heading'>Team</h1>
+        </header>
+        <main class='container'>
+            ${htmlCards}
+        </main>
+    </body>
+    </html>`;
+  }
+  
+  const addEmployee = (answer, job) => {
+    const name = answer.name;
+    const id = answer.id;
+    const email = answer.email;
+    const officeNum = answer.officeNum;
+    const github = answer.github;
+    const school = answer.school;
+  
+  
+  
+    switch(job) {
+      case "Manager":
+        employee = new Manager(name, id, email, officeNum);
+        break;
+      case "Engineer":
+        employee = new Engineer(name, id, email, github)
+        break;
+      case "Intern":
+        employee = new Intern(name, id, email, school)
+    }
+  
+    employeeCard(employee);
+  }
+  
+  const GenerateHtml = (finalHtml) => {
+    fs.writeFile(fileName, finalHtml, (err) => {
+      err ? console.log("Error!") : console.log("File Created!")
+    })
+  }
+
+  
+
 init();
