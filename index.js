@@ -1,15 +1,16 @@
 // DEPENDENCIES & Packages ===========
 const inquirer = require("inquirer");
-const fs = require("fs")
-const employee = require("./lib/Employee");
-const intern = require("./lib/Intern");
-const engineer = require("./lib/Engineer");
-const manager = require("./lib/Manager");
-const genHTML = require("./src/generateHTML");
+const fs = require("fs");
+const Employee = require("./lib/Employee.js");
+const Intern = require("./lib/Intern.js");
+const Engineer = require("./lib/Engineer.js");
+const Manager = require("./lib/Manager.js");
+const fileName = "./dist/index.html";
 
 // DATA ===========
-const filename = "index.html";
-let teamArray = [generateHTML];
+const htmlCards = ``;
+let job = "Manager";
+let finalHtml = ``;
 
 // Questions in Array for User Input
 const initialManagerQuestions = [
