@@ -13,31 +13,45 @@ let job = "Manager";
 let finalHtml = ``;
 
 // Questions in Array for User Input
-const initialManagerQuestions = [
+const Questions = [
     {
         type: "input",
-        name: "mainName",
-        message: "What is your name?",
+        name: "name",
+        message: "What is the employee's name?",
     },
     {
         type: "input",
-        name: "mainID",
-        message: "What is your ID?",
+        name: "id",
+        message: "What is his/her ID?",
     },
     {
         type: "input",
-        name: "mainEmail",
-        message: "What is your email address?",
+        name: "email",
+        message: "What is the employee's email address?"
     },
-    console.log(initialManagerQuestions)
+    console.log(questions)
 ];
 
 // Array of team members selected by Manager
-const selectTeamMemberQuestion = [
+const managerQuestions = Questions.concat [
     {
         type: "list",
-        name: "What is your role here?",
-        choices: ["Intern", "Engineer", "Manager"],
+        name: "officeNum",
+        message: "What's the Manager's office number?"
+    }
+);
+
+ const engineerQuestions = Questions.concat [
+    {
+        type: "list",
+        name: "github",
+        message: "What is the GitHub username of this Engineer?",
+    }
+const engineerQuestions = Questions.concat [
+    {
+        type: "list",
+        name: "github",
+        message: "What is the GitHub username of this Engineer?",
     }
 ]
 
