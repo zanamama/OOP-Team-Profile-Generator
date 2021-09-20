@@ -10,6 +10,8 @@ Embed code for the video walkthrough: <iframe src="https://drive.google.com/file
 
 The following image shows a mock-up of the generated HTML’s appearance and functionality:
 
-
-
 ![Getting Started](assets/Team-Profile-Generator.png)
+
+Created By: Zana Mathuthu 2021
+Columbia Engineering - Coding Bootcamp
+Reach out to me here! www.linkedin.com/in/zanamathuthu
