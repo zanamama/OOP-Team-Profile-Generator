@@ -7,12 +7,12 @@ const Manager = require("./lib/Manager.js");
 const fileName = "./dist/index.html";
 
 // DATA ===========
-const htmlCards = ``;
+let htmlCards = ``;
 let job = "Manager";
 let finalHtml = ``;
 
 // Questions in Array for User Input
-const Questions = [
+const questions = [
   {
     type: "input",
     name: "name",
@@ -28,23 +28,22 @@ const Questions = [
     name: "email",
     message: "What is the employee's email address?",
   },
-  console.log(questions),
 ];
 
 // Array of team members selected by Manager
-const managerQuestions = Questions.concat({
-  type: "list",
+const managerQuestions = questions.concat({
+  type: "input",
   name: "officeNum",
   message: "What's the Manager's office number?",
 });
 
-const engineerQuestions = Questions.concat({
-  type: "list",
+const engineerQuestions = questions.concat({
+  type: "input",
   name: "github",
   message: "What is the GitHub username of this Engineer?",
 });
 
-const internQuestions = Questions.concat({
+const internQuestions = questions.concat({
   type: "input",
   name: "school",
   message: "What college/university is the Intern currently attending?",
@@ -194,7 +193,7 @@ const startInquirer = (questions) => {
 
 const init = () => {
   if (job === "Manager") {
-    console.log("Lets start by adding a Manager.");
+    console.log("Lets start by adding the Manager.");
     startInquirer(managerQuestions);
   } else if (job === "Engineer") {
     startInquirer(engineerQuestions);

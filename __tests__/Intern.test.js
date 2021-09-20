@@ -3,7 +3,7 @@ const Intern = require("../lib/Intern");
 describe("Intern", () => {
   describe("Get School", () => {
     it("Should return the interns school.", () => {
-      const school = "Pennsylvania State University";
+      const school = "Penn State University";
 
       const obj = new Intern("Sarah", 711427, "sarah@psu.edu", school);
 
@@ -19,7 +19,7 @@ describe("Intern", () => {
         "Sarah",
         711254,
         "sarah@psu.edu",
-        "Pennsylvania State University"
+        "Penn State University"
       );
 
       expect(obj.getRole()).toEqual(role);

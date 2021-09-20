@@ -2,7 +2,8 @@
   "name": "oop-team-profile-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",  "scripts": {
+  "main": "index.js",
+  "scripts": {
     "start": "node index.js",
     "test": "jest --watch"
   },
@@ -10,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.1.2",
-    "jest": "^27.0.6"
+    "inquirer": "^8.1.2"
+  },
+  "devDependencies": {
+    "jest": "^27.2.0"
   }
 }

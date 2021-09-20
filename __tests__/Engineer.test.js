@@ -7,7 +7,7 @@ describe("Engineer", () => {
 
       const obj = new Engineer(
         "Makhosazana",
-        1,
+        711326,
         "zana@intercomstaffing.com",
         github
       );
